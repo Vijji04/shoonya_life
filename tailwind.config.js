@@ -4,8 +4,18 @@ module.exports = {
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        primaryColor: '#1b3252',
+        filterColor: '#efefef',
+        cardBg: '#e0d9cf'
+      },
+      fontFamily: {
+        openSans: ['Open Sans', 'sans-serif'],
+      },
+    },
   },
   plugins: [],
 }
+
 
