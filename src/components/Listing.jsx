@@ -17,10 +17,11 @@ function Listing({ filterData }) {
         // Build the query string with filters
         const queryParams = [];
 
-        if (filterData.search) {
+     if (filterData.search)
+       {
           queryParams.push(`search=${encodeURIComponent(filterData.search)}`);
         }
-        if (filterData.option) {
+         if (filterData.option) {
           queryParams.push(`type=${encodeURIComponent(filterData.option)}`);
         }
         if (filterData.date) {
@@ -35,19 +36,20 @@ function Listing({ filterData }) {
         }
 
         const response = await fetch(url);
-        if(!response)
+
+
+        if(!response.ok)
         {
           setFlag(1);
           throw new Error('Not found')
         }
         const data = await response.json();
 
-        if(data.length === 0)
-        {
-          setFlag(1);
-        }
+      if(data.length === 0)
+      { setFlag(1); }
         else{
           setData(data);
+          setFlag(0) //reset flag to 0 if there is data again, to showcase data
         }
 
         
