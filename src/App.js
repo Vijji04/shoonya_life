@@ -4,6 +4,7 @@ import Filters from './components/Filters';
 import HeroSection from './components/HeroSection';
 import Listing from './components/Listing';
 import { useState,useCallback } from 'react';
+import Footer from './components/Footer';
 function App() {
 
   const [filterData,setFilterData] = useState(
@@ -27,6 +28,7 @@ function App() {
     </div> 
      <Filters setFilterData={handleSetFilterData} />
      <Listing filterData={filterData} />
+     <Footer />
     </div>
   );
 }
