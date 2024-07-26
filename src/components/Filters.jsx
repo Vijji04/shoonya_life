@@ -1,56 +1,78 @@
-import React from 'react';
-import { DatePicker, Form, Select, Input } from 'antd';
+import React, { useState, useEffect } from 'react';
+import { DatePicker, Select, Input } from 'antd';
 
-function Filters() {
+const { Option } = Select;
+
+function Filters({ setFilterData }) {
+  const [date, setDate] = useState(null);
+  const [option, setOption] = useState(null);
+  const [search, setSearch] = useState(null);
+
+
+  useEffect(() => {
+    const filterValues = {
+      date: date ? date.format("YYYY-MM-DD") : null,
+      option: option,
+      search: search,
+    };
+
+    setFilterData(filterValues);
+    // console.log("Filter values updated:", filterValues); tested if the values are being obtained
+  }, [date,option,search]); // Including useEffect and dependencies to prevent re-rendering of the page
+
+  const handleDateChange = (date) => {
+    setDate(date);
+  };
+
+  const handleOptionChange = (value) => {
+    setOption(value);
+  };
+
+  const handleSearchChange = (event) => {
+    setSearch(event.target.value);
+  };
+
   return (
     // Begin of filters
     <div className='w-full flex justify-center md:justify-between'>
-      <Form className='w-full mt-4 md:px-4'>
+      <div className='w-full mt-4 md:px-4'>
         <div className='md:flex md:justify-between'>
           <div className='md:flex'>
-            <Form.Item
-              name="DatePicker"
-              className='px-2'
-            >
+            <div className='px-2'>
               <DatePicker
                 className='w-full'
                 placeholder='Filter by Date'
+                onChange={handleDateChange}
+               picker='year'
               />
-            </Form.Item>
+            </div>
 
-            <Form.Item
-              name="Select"
-              className='px-2'
-            >
+            <div className='px-2'>
               <Select
                 className='w-full'
                 placeholder='Filter by Type'
-              />
-            </Form.Item>
+                onChange={handleOptionChange}
+              >
+                <Option value="Signature">Signature</Option>
+                <Option value="Standalone">Standalone</Option>
+              </Select>
+            </div>
           </div>
-          <div className='md:ml-4'> {/* Add margin for spacing */}
-            <Form.Item
-              name="Input"
-              className='px-2'
-              
-            >
+          <div className='md:ml-4'> 
+            <div className='px-2'>
               <Input
-                className='w-full md:w-64' // Adjust text size and padding
+                className='w-full md:w-64'
                 placeholder='Search retreats by title'
+                onChange={handleSearchChange}
               />
-            </Form.Item>
+            </div>
           </div>
         </div>
-      </Form>
+      </div>
       
       {/* End of filters */}
-           
     </div>
   );
 }
 
 export default Filters;
-
-
-
-  
