@@ -17,7 +17,8 @@ function Filters({ setFilterData }) {
     };
 
     setFilterData(filterValues);
-    // console.log("Filter values updated:", filterValues); tested if the values are being obtained
+    console.log("Filter values updated:", filterValues); 
+    
   }, [date,option,search]); // Including useEffect and dependencies to prevent re-rendering of the page
 
   const handleDateChange = (date) => {
