@@ -11,10 +11,10 @@ function Listing({ filterData }) {
   useEffect(() => {
     async function getDetails() {
       try {
-        // Base URL for fetching data
+        // Base URL
         let url = 'https://669f704cb132e2c136fdd9a0.mockapi.io/api/v1/retreats';
 
-        // Build the query string with filters
+        // Building the query string with filters
         const queryParams = [];
 
      if (filterData.search)
@@ -29,9 +29,9 @@ function Listing({ filterData }) {
         }
 
         // Add query parameters to URL if any
-        if (queryParams.length > 0) {
-          url += `?${queryParams.join('&')}`;
-        } else {
+      if (queryParams.length > 0) {
+        url += `?${queryParams.join('&')}`;
+      } else {
           url += '?page=1&limit=10'; // Default fetch for the first 10 items
         }
 
@@ -67,14 +67,14 @@ function Listing({ filterData }) {
     currentPage * itemsPerPage + itemsPerPage
   );
 
-  // Handle Next button click
+
   const handleNext = () => {
     if ((currentPage + 1) * itemsPerPage < data.length) {
       setCurrentPage((prevPage) => prevPage + 1);
     }
   };
 
-  // Handle Previous button click
+
   const handlePrevious = () => {
     if (currentPage > 0) {
       setCurrentPage((prevPage) => prevPage - 1);
@@ -96,14 +96,14 @@ function Listing({ filterData }) {
         <button
           className="bg-primaryColor text-white py-2 px-6 rounded-md"
           onClick={handlePrevious}
-          disabled={currentPage === 0} // Disable Previous button if on the first page
+          disabled={currentPage === 0} // Disabling Previous button if on the first page
         >
           Previous
         </button>
         <button
           className="bg-primaryColor text-white py-2 px-6 rounded-md"
           onClick={handleNext}
-          disabled={(currentPage + 1) * itemsPerPage >= data.length} // Disable Next button if on the last page
+          disabled={(currentPage + 1) * itemsPerPage >= data.length} // Disabling Next button if on the last page
         >
           Next
         </button>
