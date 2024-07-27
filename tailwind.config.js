@@ -13,6 +13,9 @@ module.exports = {
       fontFamily: {
         openSans: ['Open Sans', 'sans-serif'],
       },
+      screens: {
+        'lg': '1200px', // Custom breakpoint for large screens
+      },
     },
   },
   plugins: [],

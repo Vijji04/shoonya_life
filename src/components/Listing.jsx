@@ -87,7 +87,8 @@ function Listing({ filterData }) {
       {/* Displaying error messsage if not found by API */}
       {flag ? (<Notfound />) :(
         <div>
-             <div className="flex md:gap-4 flex-col md:flex-row mt-6 px-8 overflow-hidden max-w-[1430px]">
+             <div className="flex justify-between md:gap-2 lg:gap-4 
+             flex-col md:flex-row mt-6 px-8 lg:px-2 xl:ml-4 md:px-4 overflow-hidden max-w-[1400px]">
         {currentData.map((info, index) => (
           <div className="mt-3" key={index}>
             <ListingCard data={info} />
