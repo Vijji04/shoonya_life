@@ -29,3 +29,5 @@ You may also see any lint errors in the console.
  >Completely responsive in all devices.
 
  >primary colours and fonts used are directly defined in tailwind config file.
+
+ >Deploying on vercel for ease of use.
