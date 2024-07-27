@@ -67,6 +67,7 @@ function Listing({ filterData }) {
     currentPage * itemsPerPage + itemsPerPage
   );
 
+//USing the manual carousel effect code instead of relying on libraries, animation not added intentionally
 
   const handleNext = () => {
     if ((currentPage + 1) * itemsPerPage < data.length) {
@@ -83,6 +84,7 @@ function Listing({ filterData }) {
 
   return (
     <div>
+      {/* Displaying error messsage if not found by API */}
       {flag ? (<Notfound />) :(
         <div>
              <div className="flex md:gap-4 flex-col md:flex-row mt-6 px-8 overflow-hidden max-w-[1430px]">

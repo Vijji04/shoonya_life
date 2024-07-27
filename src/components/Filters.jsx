@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { DatePicker, Select, Input } from 'antd';
-import moment from 'moment';
+import moment from 'moment'; //Since data is coming in from API as UNIX timestamp, I am using this library to convert the date.
 
 const { Option } = Select;
 
@@ -26,7 +26,7 @@ function Filters({ setFilterData }) {
     if (date) {
       const dateString = date.format('YYYY-MM-DD');
 
-      //I console logged the fetched date and API date in UNIX time stamp and found that there is a difference of 19800, 
+      //I console logged the fetched date and API date in UNIX time stamp,I found that there is a difference of 19800, 
       // I figured,it could be because of difference in timezones and hourly time, 
       // therefore I have added it for every date fetched from filter to a constant 19800 and it seems to work.
        
@@ -52,9 +52,9 @@ function Filters({ setFilterData }) {
   return (
     // Begin of filters
     <div className='w-full flex justify-center md:justify-between'>
-      <div className='w-full mt-4 md:px-4'>
-        <div className='md:flex md:justify-between'>
-          <div className='md:flex'>
+    <div className='w-full mt-4 md:px-4'>
+           <div className='md:flex md:justify-between'>
+           <div className='md:flex'>
             <div className='px-2 mt-2'>
               <DatePicker
                 className='w-full'
@@ -70,8 +70,14 @@ function Filters({ setFilterData }) {
                 placeholder='Filter by Type'
                 onChange={handleOptionChange}
               >
-                <Option value="Signature">Signature</Option>
-                <Option value="Standalone">Standalone</Option>
+                <Option
+                 value="Signature">
+                  Signature
+                  </Option>
+                <Option 
+                value="Standalone">
+                  Standalone
+                  </Option>
               </Select>
             </div>
           </div>
@@ -85,7 +91,7 @@ function Filters({ setFilterData }) {
             </div>
           </div>
         </div>
-      </div>
+       </div>
       
       {/* End of filters */}
     </div>
